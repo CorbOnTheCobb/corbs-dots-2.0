@@ -8,7 +8,7 @@ local dpi = require("beautiful.xresources").apply_dpi
 
 -- {{{ Main
 local theme = {}
-theme.wallpaper = themes_path .. "productive/nautical.png"
+theme.wallpaper = themes_path .. "productive/explosion.png"
 -- }}}
 
 -- {{{ Styles
@@ -17,7 +17,7 @@ theme.taglist_font = "icomoon 18"
 theme.tasklist_font = "Terminus 0"
 
 -- {{{ Colors
-theme.fg_normal  = "#94A3A5"
+theme.fg_normal  = "#DEDEDE"
 theme.fg_focus   = "#7aa2ff"
 theme.fg_urgent  = "#ff5555"
 theme.bg_normal  = "#282a36bb"
@@ -27,7 +27,7 @@ theme.bg_systray = theme.bg_normal
 -- }}}
 
 -- {{{ Borders
-theme.useless_gap   = dpi(0)
+theme.useless_gap   = dpi(10)
 theme.border_width  = dpi(0)
 theme.border_normal = "#3F3F3F"
 theme.border_focus  = "#6F6F6F"
