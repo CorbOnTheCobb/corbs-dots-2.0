@@ -238,13 +238,16 @@ awful.screen.connect_for_each_screen(function(s)
 
 
     local spr    = wibox.widget.textbox(" ")
-    local barspr = wibox.widget {
-    markup = ("| "),
+    --[[local barspr = wibox.widget {
+    markup = ("|"),
     align  = 'center',
     valign = 'center',
     font   = 'Terminus 22',
     widget = wibox.widget.textbox,
     }
+--]]
+
+    local barspr = wibox.widget { widget = wibox.widget.separator, forced_width = 2 }
 
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s })
@@ -260,6 +263,7 @@ awful.screen.connect_for_each_screen(function(s)
             spr,
             s.mypromptbox,
             barspr,
+            spr,
         },
         s.mytasklist, -- Middle widget
         { -- Right widgets
@@ -625,3 +629,4 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --Useless Gaps
 beautiful.useless_gap = 10
 awful.spawn.with_shell("picom")
+awful.spawn.with_shell("sudo g910-led -a 0077ff")
