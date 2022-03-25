@@ -629,4 +629,3 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --Useless Gaps
 beautiful.useless_gap = 10
 awful.spawn.with_shell("picom")
-awful.spawn.with_shell("sudo g910-led -a 0077ff")
