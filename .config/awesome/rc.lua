@@ -376,6 +376,18 @@ globalkeys = gears.table.join(
         -- (Scr)eensh(ot)
     awful.key({ }, "Print", function () awful.util.spawn("scrot") end,
               {description = "take a screenshot", group = "hotkeys"}),
+    
+    awful.key({ modkey, 'Shift' }, 'w', function()
+            awful.spawn.with_shell('amixer -q -D pulse set Master 5%+')
+        end, { description = 'volume up', group='audio' }
+    ),
+
+
+    awful.key({ modkey, 'Shift' }, 's', function()
+            awful.spawn.with_shell('amixer -q -D pulse set Master 5%-')
+        end, { description = 'volume down', group='audio' }
+    ),
+
 
     awful.key({ modkey }, "x",
               function ()
@@ -629,3 +641,4 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --Useless Gaps
 beautiful.useless_gap = 10
 awful.spawn.with_shell("picom")
+awful.spawn.with_shell("sudo g910-led -a 0077ff")
