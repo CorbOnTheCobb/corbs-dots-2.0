@@ -85,15 +85,16 @@ awful.layout.layouts = {
 -- {{{ Menu
 -- Create a launcher widget and a main menu
 myawesomemenu = {
-   { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
-   { "restart", awesome.restart },
-   { "quit", function() awesome.quit() end },
+   { "Hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
+   { "Manual", terminal .. " -e man awesome" },
+   { "Edit Config", editor_cmd .. " " .. awesome.conffile },
+   { "Restart", awesome.restart },
+   { "Quit", function() awesome.quit() end },
 }
 
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "open terminal", terminal }
+mymainmenu = awful.menu({ items = { { "Awesome", myawesomemenu, beautiful.awesome_icon },
+                                    { "Launch Applications", function() awful.spawn.with_shell("rofi -normal-window -modi drun -show drun -theme " .. theme_dir .. "productive/rofi.rasi") end },
+                                    { "Open Terminal", terminal }
                                   }
                         })
 
@@ -400,8 +401,8 @@ globalkeys = gears.table.join(
               end,
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
-    awful.key({ modkey }, "d", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+    awful.key({ modkey }, "d", function() awful.spawn.with_shell("rofi -normal-window -modi drun -show drun -theme " .. theme_dir .. "productive/rofi.rasi") end,
+              {description = "show the launcher", group = "launcher"})
 )
 
 clientkeys = gears.table.join(
@@ -641,3 +642,4 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --Useless Gaps
 beautiful.useless_gap = 10
 awful.spawn.with_shell("picom")
+awful.spawn.with_shell("sudo g910-led -a 0077ff")
