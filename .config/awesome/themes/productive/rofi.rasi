@@ -1,6 +1,6 @@
 configuration {
     show-icons: true;
-    icon-theme: "Tela-dark";
+    icon-theme: "Papirus";
     font: "Iosevka Nerd Font 12";
     display-drun: "";
     drun-display-format: "{name}";
