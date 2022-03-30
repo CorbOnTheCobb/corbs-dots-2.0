@@ -4,7 +4,7 @@
 My new, debloated, minimal dot-files :)
 
 # Requirements:
-ttf-iosevka-nerd ttf-jetbrains-mono rofi alsa-utils kitty picom-ibhagwan-git
+ttf-iosevka-nerd ttf-jetbrains-mono rofi alsa-utils kitty picom-ibhagwan-git papirus-icon-theme
 
 # Preferable:
 zsh oh-my-zsh pulseaudio or pipewire-pulse
