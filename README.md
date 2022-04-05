@@ -1,6 +1,6 @@
 # corbs-dots-2.0
 ![2022-03-23-144043_2560x1080_scrot](https://user-images.githubusercontent.com/98620032/159782622-412d6213-19b7-45d0-adca-5a9319808fd6.png)
-![2022-03-30-130844_2560x1080_scrot](https://user-images.githubusercontent.com/98620032/160902486-638d4876-e860-494b-8c72-b458a553f616.png)
+![2022-04-05-180657_2560x1080_scrot](https://user-images.githubusercontent.com/98620032/161865377-5b30eb72-dc2a-4d87-8885-5b9cb86891ae.png)
 
 My new, debloated, minimal dot-files :)
 
