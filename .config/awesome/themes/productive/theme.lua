@@ -8,7 +8,7 @@ local dpi = require("beautiful.xresources").apply_dpi
 
 -- {{{ Main
 local theme = {}
-theme.wallpaper = themes_path .. "productive/explosion.png"
+theme.wallpaper = themes_path .. "productive/citynight.png"
 -- }}}
 
 -- {{{ Styles
@@ -20,7 +20,7 @@ theme.tasklist_font = "Terminus 0"
 theme.fg_normal  = "#DEDEDE"
 theme.fg_focus   = "#7aa2ff"
 theme.fg_urgent  = "#ff5555"
-theme.bg_normal  = "#282a36bb"
+theme.bg_normal  = "#282a36"
 theme.bg_focus   = "#282a3600"--"#171925"
 theme.bg_urgent  = "#3F3F3F"
 theme.bg_systray = theme.bg_normal
@@ -69,8 +69,9 @@ theme.mouse_finder_color = "#CC9393"
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
-theme.menu_height = dpi(15)
-theme.menu_width  = dpi(100)
+theme.menu_height = dpi(32)
+theme.menu_width  = dpi(240)
+theme.menu_font   = theme.font
 -- }}}
 
 -- {{{ Icons
