@@ -8,7 +8,7 @@ configuration {
 
 * {
     background-color: transparent;
-    background: #172244;
+    background: #172244E5;
     background-alt: #ffffff13;
     text-color: #D8DEE9;
     primary: #A3BE8C;
@@ -17,7 +17,7 @@ configuration {
 
 window {
     height: 97.1%;
-    width: 100%;
+    width: 15%;
     transparency: "real";
     background-color: @background;
 }
@@ -48,7 +48,7 @@ mainbox {
 }
 
 listview {
-    columns: 10;
+    columns: 2;
     layout: vertical;
     spacing: 0;
     margin: 7% 0;
