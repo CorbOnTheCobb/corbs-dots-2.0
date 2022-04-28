@@ -99,6 +99,7 @@ mymainmenu = awful.menu({ items = { { "Awesome", myawesomemenu, beautiful.awesom
                         })
 
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
+				     forced_height = 10,
                                      menu = mymainmenu })
 
 -- Menubar configuration
@@ -248,10 +249,11 @@ awful.screen.connect_for_each_screen(function(s)
     }
 --]]
 
-    local barspr = wibox.widget { widget = wibox.widget.separator, forced_width = 2 }
+    local barspr = wibox.widget { widget = wibox.widget.separator, thickness = 4, forced_width = 2 }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, width = 1600, height = 32, shape = function(cr, width, height) gears.shape.rounded_rect(cr, width, height, 0) end, })
+    s.mywibox = awful.wibar({position = "top", screen = s, height = 10, width = 1, bg = "#00000000"})
+    s.mywibox = awful.wibar({ position = "top", screen = s, border_width = 4, border_color = beautiful.bg_normal, width = 1200, height = 28, shape = function(cr, width, height) gears.shape.rounded_rect(cr, width, height, 0) end, })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -270,9 +272,11 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            --wibox.widget.systray{},
-            --spr,
-            barspr,
+	    --barspr,
+	    spr,
+            wibox.widget.systray{},
+            spr,
+	    barspr,
             --mykeyboardlayout,
             mytextclock,
             s.mylayoutbox,
