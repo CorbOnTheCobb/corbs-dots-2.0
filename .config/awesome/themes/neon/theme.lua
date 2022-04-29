@@ -8,19 +8,19 @@ local dpi = require("beautiful.xresources").apply_dpi
 
 -- {{{ Main
 local theme = {}
-theme.wallpaper = themes_path .. "neon/colors.png"
+theme.wallpaper = themes_path .. "neon/island.png"
 -- }}}
 
 -- {{{ Styles
-theme.font      = "Jetbrains Mono 12"
+theme.font      = "Jetbrains Mono 13.5"
 theme.taglist_font = "icomoon 18"
 theme.tasklist_font = "Terminus 0"
 
 -- {{{ Colors
 theme.fg_normal  = "#7aa2ff"--"#DEDEDE"
-theme.fg_focus   = "#FF55AA"--"#7aa2ff"
+theme.fg_focus   = "#dedede"--"#7aa2ff"
 theme.fg_urgent  = "#ff5555"
-theme.bg_normal  = "#172244E5"--"#282a36"
+theme.bg_normal  = "#282a36"--"#172244BF"--"#282a36"
 theme.bg_focus   = "#282a3600"--"#171925"
 theme.bg_urgent  = "#3F3F3F"
 theme.bg_systray = theme.bg_normal

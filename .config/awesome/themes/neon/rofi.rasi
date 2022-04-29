@@ -8,7 +8,7 @@ configuration {
 
 * {
     background-color: transparent;
-    background: #172244E5;
+    background: #282a36;
     background-alt: #ffffff13;
     text-color: #D8DEE9;
     primary: #A3BE8C;
@@ -17,7 +17,7 @@ configuration {
 
 window {
     height: 97.1%;
-    width: 15%;
+    width: 25%;
     transparency: "real";
     background-color: @background;
 }
@@ -90,4 +90,5 @@ element-text {
     color: inherit;
     horizontal-align: 0.5;
 }
+
 
