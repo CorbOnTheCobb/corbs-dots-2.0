@@ -111,7 +111,37 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+
+--mytextclock = wibox.widget.textclock()
+
+local mytextclock = wibox.widget {
+    bg = beautiful.fg_normal,
+    --fg = beautiful.fg_normal,
+    shape = function(cr, width, height)
+        gears.shape.rounded_rect(cr, width, height, 15)
+    end,
+    widget = wibox.container.background,
+    {
+        widget = awful.widget.textclock('<span color="#ffffff" font="Jetbrains Mono 13.5"> %H:%M </span>', 5),
+    },
+}
+
+-- Systray
+
+local systray = wibox.widget {
+    {
+        wibox.widget.systray(),
+        left    = 10,
+        top     = 2,
+        bottom  = 2,
+        right   = 10,
+        widget  = wibox.container.margin,
+    },
+    bg          = beautiful.fg_normal,
+    shape       = function(cr, width, height) gears.shape.rounded_rect(cr, width, height, 15) end,
+    shape_clip  = true,
+    widget      = wibox.container.background,
+}
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -192,6 +222,21 @@ awful.screen.connect_for_each_screen(function(s)
         buttons = taglist_buttons
     }
 
+    local taglist = wibox.widget {
+    {
+        awful.widget.taglist(s, awful.widget.taglist.filter.all, awful.util.taglist_buttons),
+        left    = 5,
+        top     = 2,
+        bottom  = 3,
+        right   = 5,
+        widget  = wibox.container.margin,
+    },
+    bg          = beautiful.fg_normal,
+    shape       = function(cr, width, height) gears.shape.rounded_rect(cr, width, height, 15) end,
+    shape_clip  = true,
+    widget      = wibox.container.background,
+}
+
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist {
     screen   = s,
@@ -211,8 +256,28 @@ awful.screen.connect_for_each_screen(function(s)
             widget = wibox.container.place,
         },
         spacing = 1,
-        layout  = wibox.layout.fixed.horizontal
+        layout  = wibox.layout.fixed.horizontal()
     },
+    }
+    --]]
+        -- Create a tasklist widget
+    local tasklist = wibox.widget {
+        bg = beautiful.fg_normal,
+        fg = beautiful.fg_normal,
+        shape = function(cr, width, height)
+            gears.shape.rounded_rect(cr, width, height, 15)
+        end,
+        widget = wibox.container.background,
+        {
+            widget = wibox.container.margin,
+            margins = 2,
+            {
+               -- widget = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons),
+                widget = s.mytasklist,
+            },
+        },
+    --},
+
     -- Notice that there is *NO* wibox.wibox prefix, it is a template,
     -- not a widget instance.
     widget_template = {
@@ -239,7 +304,8 @@ awful.screen.connect_for_each_screen(function(s)
 }
 
 
-    local spr    = wibox.widget.textbox(" ")
+    local spr       = wibox.widget.textbox("  ")
+    local small_spr = wibox.widget.textbox(" ") 
     --[[local barspr = wibox.widget {
     markup = ("|"),
     align  = 'center',
@@ -249,42 +315,62 @@ awful.screen.connect_for_each_screen(function(s)
     }
 --]]
 
-    local barspr = wibox.widget { widget = wibox.widget.separator, thickness = 4, forced_width = 2 }
+    local barspr = wibox.widget { widget = wibox.widget.separator, thickness = 4, forced_width = 8 }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({position = "top", screen = s, height = 10, width = 1, bg = "#00000000"})
-    s.mywibox = awful.wibar({ position = "top", screen = s, border_width = 4, border_color = beautiful.bg_normal, width = 1200, height = 28, shape = function(cr, width, height) gears.shape.rounded_rect(cr, width, height, 12) end, })
+    --s.mywibox = awful.wibar({position = "top", screen = s, height = 6, width = 1, bg = "#00000000"}) DEPRECATED
+
+-- I don't know why, but you HAVE to have this invisible wibox for tiled windows to not overlap with the real wibox. So just keep this here if you don't want that, and change the size if you wanna change how close windows are to the real wibar.
+
+   s.mywibox = awful.wibar({ position = "bottom", screen = s, bg = "#00000000", border_width = 0, border_color = "#00000000", width = 1200, height = 28, shape = function(cr, width, height) gears.shape.rounded_rect(cr, width, height, 9) end, })
+
+
+-- The actual, visible wibar
+
+   anti_aliased_wibox = wibox({visible = true, ontop = true, type = normal, height = 28, width = 1200, border_width = 6})
+   awful.placement.bottom(anti_aliased_wibox)
+   anti_aliased_wibox.bg = "#00000000"
 
     -- Add widgets to the wibox
-    s.mywibox:setup {
+    anti_aliased_wibox:setup {
+        {
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
+            small_spr,
+            --mylauncher,
+            s.mylayoutbox,
             spr,
-            mylauncher,
-            spr,
-            s.mytaglist,
+            taglist,
             spr,
             s.mypromptbox,
-            barspr,
-            spr,
+            --barspr,
+            --spr,
         },
-        s.mytasklist, -- Middle widget
+        tasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
 	    --barspr,
 	    spr,
-            wibox.widget.systray{},
+            --wibox.widget.systray{},
+            systray,
             spr,
-	    barspr,
+	    --barspr,
+            --spr,
             --mykeyboardlayout,
             mytextclock,
-            s.mylayoutbox,
-            spr,
+            --s.mylayoutbox,
+            small_spr,
         },
+        },
+        bg = beautiful.bg_normal,
+        shape = gears.shape.rounded_rect,
+        widget = wibox.container.background()
     }
 end)
 -- }}}
+
+
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
@@ -648,5 +734,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 --Useless Gaps
 beautiful.useless_gap = 10
+awful.spawn.with_shell("killall volumeicon")
 awful.spawn.with_shell("picom")
 awful.spawn.with_shell("sudo g910-led -a 0077ff")
+awful.spawn.with_shell("volumeicon")
