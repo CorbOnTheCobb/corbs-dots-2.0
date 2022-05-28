@@ -8,7 +8,7 @@ local dpi = require("beautiful.xresources").apply_dpi
 
 -- {{{ Main
 local theme = {}
-theme.wallpaper = themes_path .. "neon/island.png"
+theme.wallpaper = themes_path .. "neon/equal2.png"
 -- }}}
 
 -- {{{ Styles
@@ -23,7 +23,7 @@ theme.fg_urgent  = "#ff5555"
 theme.bg_normal  = "#282a36"--"#172244BF"--"#282a36"
 theme.bg_focus   = "#282a3600"--"#171925"
 theme.bg_urgent  = "#3F3F3F"
-theme.bg_systray = theme.bg_normal
+theme.bg_systray = theme.fg_normal
 -- }}}
 
 -- {{{ Borders
@@ -46,7 +46,11 @@ theme.titlebar_bg_normal = theme.bg_normal --"#3F3F3F"
 -- titlebar_[normal|focus]
 -- tooltip_[font|opacity|fg_color|bg_color|border_width|border_color]
 -- Example:
---theme.taglist_bg_focus = "#CC9393"
+theme.taglist_fg_empty    = theme.bg_normal
+theme.taglist_fg_occupied = theme.bg_normal
+theme.taglist_fg_focus    = "#FFFFFF"
+
+theme.tasklist_bg_normal  = "#00000000"
 -- }}}
 
 -- {{{ Widgets
