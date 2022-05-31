@@ -327,7 +327,7 @@ awful.screen.connect_for_each_screen(function(s)
 
 -- The actual, visible wibar
 
-   anti_aliased_wibox = wibox({visible = true, ontop = false, type = normal, height = 29, width = 1920, border_width = 6})
+   anti_aliased_wibox = wibox({visible = true, ontop = false, type = normal, height = 29, width = 1600, border_width = 6})
    awful.placement.bottom(anti_aliased_wibox)
    anti_aliased_wibox.bg = "#00000000"
 
