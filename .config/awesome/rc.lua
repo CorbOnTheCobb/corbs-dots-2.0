@@ -255,7 +255,7 @@ awful.screen.connect_for_each_screen(function(s)
             halign = 'center',
             widget = wibox.container.place,
         },
-        spacing = 1,
+        spacing = 0,
         layout  = wibox.layout.fixed.horizontal()
     },
     }
@@ -327,7 +327,7 @@ awful.screen.connect_for_each_screen(function(s)
 
 -- The actual, visible wibar
 
-   anti_aliased_wibox = wibox({visible = true, ontop = true, type = normal, height = 28, width = 1200, border_width = 6})
+   anti_aliased_wibox = wibox({visible = true, ontop = false, type = normal, height = 29, width = 1920, border_width = 6})
    awful.placement.bottom(anti_aliased_wibox)
    anti_aliased_wibox.bg = "#00000000"
 
@@ -734,7 +734,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 --Useless Gaps
 beautiful.useless_gap = 10
-awful.spawn.with_shell("killall volumeicon")
+--awful.spawn.with_shell("killall volumeicon")
 awful.spawn.with_shell("picom")
 awful.spawn.with_shell("sudo g910-led -a 0077ff")
-awful.spawn.with_shell("volumeicon")
+--awful.spawn.with_shell("volumeicon")
